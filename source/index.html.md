@@ -109,7 +109,7 @@ The SMS code sent to the customer will be verified in this step.
 >DEFINITION:
 
 ```script
-POST https://sandbox.zibby.com/api/ng/application/verify_verification_code
+POST https://sandbox.zibby.com/api/ng/application/id/verify_verification_code
 ```
 >Example Request:
 
@@ -125,10 +125,17 @@ POST https://sandbox.zibby.com/api/ng/application/verify_verification_code
 
 ##Build the Application
 
->Customer Application Data:
+>Definition
 
 ```script
-{‘billing’: {
+PATCH https://sandbox.zibby.com/api/ng/application/id
+/
+```
+
+>Example Request:
+
+```script
+-d{‘billing’: {
   ‘first_name’: ‘Jane’,
   ‘last_name’: ‘Doe’,
   ‘phone’: ‘2144324537’,
@@ -182,8 +189,19 @@ Military | military
 >DEFINITION:
 
 ```script
-POST https://sandbox.zibby.com/api/ng/application/preapprove
+GET https://sandbox.zibby.com/api/ng/application/id/preapprove/
 ```
+>Example Response
+
+```script
+{
+  'application': app,
+  'approval_limit': approval_limit,
+  'expiration_date': expiration_date,
+  'code': str(code),
+}
+```
+
 ###Once the application has been built successfully, the final step in the Zibby approval process is to commit it for preapproval.
 
 
