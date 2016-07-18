@@ -208,7 +208,7 @@ The SMS code sent to the customer will be verified in this step.
 
 <p>DEFINITION:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>POST https://sandbox.zibby.com/api/ng/application/verify_verification_code
+<pre class="highlight plaintext"><code>POST https://sandbox.zibby.com/api/ng/application/id/verify_verification_code
 </code></pre>
 
 <blockquote>
@@ -226,9 +226,16 @@ The SMS code sent to the customer will be verified in this step.
 <h2 id="build-the-application">Build the Application</h2>
 
 <blockquote>
-<p>Customer Application Data:</p>
+<p>Definition</p>
 </blockquote>
-<pre class="highlight plaintext"><code>{‘billing’: {
+<pre class="highlight plaintext"><code>PATCH https://sandbox.zibby.com/api/ng/application/id
+/
+</code></pre>
+
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>-d{‘billing’: {
   ‘first_name’: ‘Jane’,
   ‘last_name’: ‘Doe’,
   ‘phone’: ‘2144324537’,
@@ -306,7 +313,18 @@ The zibby application supports the following employment types
 <blockquote>
 <p>DEFINITION:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>POST https://sandbox.zibby.com/api/ng/application/preapprove
+<pre class="highlight plaintext"><code>GET https://sandbox.zibby.com/api/ng/application/id/preapprove/
+</code></pre>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  'application': app,
+  'approval_limit': approval_limit,
+  'expiration_date': expiration_date,
+  'code': str(code),
+}
 </code></pre>
 
 <h3 id="once-the-application-has-been-built-successfully-the-final-step-in-the-zibby-approval-process-is-to-commit-it-for-preapproval">Once the application has been built successfully, the final step in the Zibby approval process is to commit it for preapproval.</h3>
