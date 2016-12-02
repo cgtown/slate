@@ -32,7 +32,7 @@ All requests and responses are in JSON format, including errors.
 >Sample Curl
 
 ```script
-curl -X GET https://sandbox.zibby.com/api/v3/application/2398798 \
+curl -X GET https://sandbox.zibby.com/api/v3/application/<uid>/ \
 
 -H "Content-Type:application/json" \
 
