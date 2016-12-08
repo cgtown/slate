@@ -228,7 +228,7 @@ Status: 400
 
 When an error is encountered the system will return this response.
 
-#Zibby Plugin Checkout
+#Zibby Plugin Preapproval and Checkout
 
 ##Step 1
 
@@ -250,9 +250,7 @@ Place the following script tag on the bottom of your page. This snippet uses an 
 ##Step 2
 
 ```script
-<a href="#" class="btn-zibby-checkout">
-<img src="https://www.zibby.com/static/img/btn-zibby-preapprove.png" alt="Get preapproved with Zibby">
-</a>
+<a class="btn-zibby-preapprove" href="#"></a>
 ```
 
 Place a button with class `btn-zibby-preapprove` on the pages where you want the Zibby pre-approval functionality to be available. Clicking this button will load the Zibby pre-approval form.
@@ -261,7 +259,7 @@ Place a button with class `btn-zibby-preapprove` on the pages where you want the
 
 ```script
 <script>
-$('.btn-zibby-checkout').on('click', function() {
+$('.btn-zibby-preapprove').on('click', function() {
     zibby.preapprove();
 });
 </script>
@@ -272,9 +270,7 @@ Start the preapproval process when the button is clicked.
 ##Step 4
 
 ```script
-<a href="#" class="btn-zibby-checkout">
-<img src="https://www.zibby.com/static/img/btn-zibby-checkout.png" alt="Checkout with Zibby">
-</a>
+<a href="#" class="btn-zibby-checkout"></a>
 ```
 
 Place or name the Zibby checkout button within the payment options page of your site.
