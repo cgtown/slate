@@ -251,13 +251,35 @@ Place the following script tag on the bottom of your page. This snippet uses an 
 
 ```script
 <a href="#" class="btn-zibby-checkout">
+<img src="https://www.zibby.com/static/img/btn-zibby-preapprove.png" alt="Get preapproved with Zibby">
+</a>
+```
+
+Place a button with class `btn-zibby-preapprove` on the pages where you want the Zibby pre-approval functionality to be available. Clicking this button will load the Zibby pre-approval form.
+
+##Step 3
+
+```script
+<script>
+$('.btn-zibby-checkout').on('click', function() {
+    zibby.preapprove();
+});
+</script>
+```
+
+Start the preapproval process when the button is clicked.
+
+##Step 4
+
+```script
+<a href="#" class="btn-zibby-checkout">
 <img src="https://www.zibby.com/static/img/btn-zibby-checkout.png" alt="Checkout with Zibby">
 </a>
 ```
 
 Place or name the Zibby checkout button within the payment options page of your site.
 
-##Step 3
+##Step 5
 
 ```script
 <script>
