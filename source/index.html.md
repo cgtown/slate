@@ -270,7 +270,7 @@ Start the preapproval process when the button is clicked.
 ##Step 4
 
 ```script
-<a href="#" class="btn-zibby-checkout"></a>
+<a class="btn-zibby-checkout" href="#"></a>
 ```
 
 Place or name the Zibby checkout button within the payment options page of your site.
