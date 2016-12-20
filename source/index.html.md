@@ -219,12 +219,24 @@ Once the application has been built successfully, the final step in the Zibby ap
 At this point, Zibby will make a full approval decision in real-time. If approved, we will return the approval amount in the response.
 
 
-##Error Example
+##Error Examples
 
 ```script
 Response: {"error": {"ssn": ["Invalid Ssn"]}}
 Status: 400
 ```
+
+```script
+Response: {"error": {"dob": "You must be 18 or older to apply"}}
+Status: 400
+```
+
+```script
+Response: {"error": {"phone": "Phone numbers must be in XXX-XXX-XXXX format"}}
+Status: 400
+```
+
+
 
 When an error is encountered the system will return this response.
 
