@@ -590,6 +590,90 @@ Return: 	{"success": true}
 
 Once items are delivered, retailers can update Zibby on the delivery via the API.
 
+##Multiple Submits
+
+```script
+Batch Delivery:
+
+/api/v3/applications/delivery/
+Method: POST
+Current Limit: 100
+
+Request: {
+  "uids": {
+    "1234567890": {
+      "items": 
+          [
+            {
+              "sku": "285868",
+              "display_name": "BATTERY",
+              "unit_price": 4.0, 
+              "quantity": 4, 
+              
+            }, 
+
+            {
+              "sku": "12345",
+              "display_name": "SOFA",
+              "unit_price": 500.0, 
+              "quantity": 1, 
+            }
+          ]
+      "delivery_date": "2016-10-14T13:40:16.368888"
+    },
+    "ab12345": {
+      "items": 
+          [
+            {
+              "sku": "285868",
+              "display_name": "BATTERY",
+              "unit_price": 4.0, 
+              "quantity": 4, 
+              
+            }
+          ]
+      "delivery_date": "2016-10-17T13:40:16.368888"
+      }
+    }
+  }
+
+
+Response: {"success": true}
+```
+
+The Batch Submit Delivery allows for bulk submission of deliveries. The current limit is 100 per API call.
+
+##First Payment
+
+```script
+/api/v3/first_payment/
+METHOD: POST
+Request:
+{
+  "id": "e7a5eb6c2",
+    "payment_details": {
+        "CardNumber": "4111111111111111",
+        "CardCvv": "324",
+        "CardExpiration": "12/20",
+        "PaymentType": "debit",
+        "Contract": "true",
+        "Disclosure": "true"
+    }
+}
+
+Return: {"success": true}
+```
+
+Post origination, the first payment can be made by posting to this endpoint. In the payload: `id` is the `uid` of the application.
+
+##Contract
+
+```script
+/api/v3/<uid>/contract/?type="user" or "pricing"
+METHOD: GET
+Response: Contract object rendered in HTML.
+```
+The Pricing or User Contract can be obtained by passing the `uid` and the type of contract (currently only `user` and `pricing`) in the url.
 
 
 
