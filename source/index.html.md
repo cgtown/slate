@@ -497,7 +497,7 @@ Request:	{"code": "123456",
 					"display_name":"Furniture Set",
 					"sku":"FS3525",
 					"unit_price":700,
-					"quantity":1
+					"quantity":1,
 					"leasable": true,
 					"shipping":{"sku":"000HD999000",
 								"display_name":"HOME DELIVERY CHARGE",
