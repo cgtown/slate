@@ -135,11 +135,6 @@ Request:		{"phone": "1234567890",
                  "driver_license_expiration_year": "2018",
                  "driver_license_expiration_month": "09",
                  "driver_license_expiration_day": "12",
-                 "employment_type": "full-time",
-                 "reference_name": "Jamie Smith",
-                 "reference_phone_number": "2172849548",
-                 "employment_name": "Streamlake Insurance",
-                 "employment_number": "3672734875",
                  "privacy_agreement_accepted": "true"}
 Response:		{"uid": "2f0db9059d6a46c1a02e5361243e40b6"}
 Status: 		201
