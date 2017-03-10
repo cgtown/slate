@@ -219,6 +219,15 @@ Once the application has been built successfully, the final step in the Zibby ap
 At this point, Zibby will make a full approval decision in real-time. If approved, we will return the approval amount in the response.
 
 
+##Output for not passing underwriting
+```script
+Response: {"approved": False}
+Status: 202
+```
+
+When the application does not pass underwriting, this will be the response.
+
+
 ##Error Examples
 
 ```script
@@ -235,8 +244,6 @@ Status: 400
 Response: {"error": {"phone": "Phone numbers must be in XXX-XXX-XXXX format"}}
 Status: 400
 ```
-
-
 
 When an error is encountered the system will return this response.
 
@@ -465,83 +472,112 @@ Based on the content of a customer's shopping cart, the Zibby API can return a p
 ```script
 URL: 		/api/v3/application/initialize/
 Method: 	POST
-Request:	{"code": "123456",
-                 "customer":{
-				"billing":{
-					"first_name":"jane",
-					"middle_name":"Q",
-					"last_name":"doe",
-					"address":"123 main street",
-					"address2":"apt 5b",
-					"city":"New York",
-					"state":"NY",
-					"country":"United States",
-					"zip":"10009",
-					"phone":"5554324537",
-					"email":"jqdoe@anonmail.com"
-					},
-				"shipping":{
-					"first_name":"jane",
-					"middle_name":"Q",
-					"last_name":"doe",
-					"address":"123 main street",
-					"address2":"apt 5b",
-					"city":"New York",
-					"state":"NY",
-					"country":"United States",
-					"zip":"10009",
-					"phone":"5554324537",
-					"email":"jqdoe@anonmail.com"
-					}
-				},"items":[{
-					"display_name":"Furniture Set",
-					"sku":"FS3525",
-					"unit_price":700,
-					"quantity":1,
-					"leasable": true,
-					"shipping":{"sku":"000HD999000",
-								"display_name":"HOME DELIVERY CHARGE",
-								"unit_price":"5.0",
-								"quantity":"1"}
-								},
-					{"display_name":"AA Batteries",
-					 "sku":"AA5234",
-					 "unit_price":15,
-					 "quantity":1,
-					 "leasable": false
-					 }],"checkout":{"customer_id":"1000438727823",
-					 				"shipping_amount":10,
-					 				"discounts":[{"discount_name":"Birthday Discount",
-					 							  "discount_amount":50},
-					 							  {"discount_name":"Towel Discount","discount_amount":50}]},
-					 				"urls":{"return":"https://yoursite.com/return","cancel":"https://yoursite.com/cancel"},"phone":"6073393582","code":"258446","new_address":false}
+Request: 	{
+    "code": "123456",
+    "customer": {
+        "billing": {
+            "first_name": "jane",
+            "middle_name": "Q",
+            "last_name": "doe",
+            "address": "123 main street",
+            "address2": "apt 5b",
+            "city": "New York",
+            "state": "NY",
+            "country": "United States",
+            "zip": "10009",
+            "phone": "5554324537",
+            "email": "jqdoe@anonmail.com"
+        },
+        "shipping": {
+            "first_name": "jane",
+            "middle_name": "Q",
+            "last_name": "doe",
+            "address": "123 main street",
+            "address2": "apt 5b",
+            "city": "New York",
+            "state": "NY",
+            "country": "United States",
+            "zip": "10009",
+            "phone": "5554324537",
+            "email": "jqdoe@anonmail.com"
+        }
+    },
+    "items": [{
+        "display_name": "Furniture Set",
+        "sku": "FS3525",
+        "unit_price": 700,
+        "quantity": 1,
+        "leasable":  true,
+        "shipping": {"sku":"000HD999000",
+            "display_name": "HOME DELIVERY CHARGE",
+            "unit_price": "5.0",
+            "quantity": "1"}
+    },
+    {"display_name": "AA Batteries",
+        "sku": "AA5234",
+        "unit_price": 15,
+        "quantity": 1,
+        "leasable": false
+    }],
+    "checkout": {
+        "customer_id": "1000438727823",
+        "shipping_amount": 10,
+        "discounts": [
+        {"discount_name":"Birthday Discount",
+            "discount_amount": 50},
+        {"discount_name": "Towel Discount","discount_amount":50}]
+    },
+    "urls":{
+        "return": "https: //yoursite.com/return",
+        "cancel": "https: //yoursite.com/cancel"
+    },
+    "phone": "6073393582",
+    "new_address": false
+}
 Response: 	{"delivery_method": "delivery",
- 			 "processing_fee": 0,
- 			 "shipping": "10",
- 			 "shipping_sales_tax": "0.89",
- 			 "items": [{"item_code": "item make",
- 			 "item_name": "item description",
- 			 "item_type": "new",
- 			 "quantity": 1,
- 			 "rent": "62.50",
- 			 "retailer_price": "500",
- 			 "sales_tax": "5.55",
- 			 "shipping": {"sku":"000HD999000",
-								"display_name":"HOME DELIVERY CHARGE",
-								"unit_price":"5.0",
-								"quantity":"1"},
- 			 "warranty": {"code": "warranty sku",
- 						  "monthly_amount": "5.56",
- 						  "monthly_tax": "0.49",
- 						  "name": "warranty name",
- 						  "price": "100"}}],
- 			 "term": 18,
- 			 "monthly_total": "67.50",
-			 "due_at_checkout": "84.99",
-			 "uid": "113c8c68ab9a4b7ba999af018574ee2d"}
+                "processing_fee": 0,
+                "shipping": "10",
+                "shipping_sales_tax": "0.89",
+                "items": [{"item_code": "item make",
+                    "item_name": "item description",
+                    "item_type": "new",
+                    "quantity": 1,
+                    "rent": "62.50",
+                    "retailer_price": "500",
+                    "sales_tax": "5.55",
+                    "shipping": {
+                        "sku":"000HD999000",
+                        "display_name": "HOME DELIVERY CHARGE",
+                        "unit_price":"5.0",
+                        "quantity":"1"},
+                    "warranty": {"code": "warranty sku",
+                        "monthly_amount": "5.56",
+                        "monthly_tax": "0.49",
+                        "name": "warranty name",
+                        "price": "100"}}],
+                "term": 18,
+                "monthly_total": "67.50",
+                "due_at_checkout": "84.99",
+                "uid": "113c8c68ab9a4b7ba999af018574ee2d"}
 ```
-
 To begin the checkout, we must open the checkout by submitting the full contents of the shopping cart.
+
+
+##Initialize Re-Underwrite
+
+```script
+Response:   {
+                "new_decision": {
+                    "approved": false
+                }}
+Status:			202
+
+
+```
+If the preapproval was created a month ago, then a re-underwrite is performed when an initialize is submitted. If this re-underwrite does not succeed, then the response will be similar to the non-approval decision shown in the Underwriting section above.
+
+A re-underwrite is also performed if the `new_address: true` is set and if the address provided is different from the address which was originally submitted to the `/api/v3/application/` resource.
+
 
 #Post-Origination
 
